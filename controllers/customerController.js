@@ -1,25 +1,13 @@
-// controllers/customerController.js
-const Customer = require("../models/Customer");
+import Customer from '../models/Customer.js';
 
-// جلب جميع الزبائن
-exports.getAllCustomers = async (req, res) => {
-  try {
-    const customers = await Customer.find().sort({ createdAt: -1 });
-    res.json(customers);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-// إضافة زبون جديد
-exports.createCustomer = async (req, res) => {
-  try {
-    const newCustomer = new Customer(req.body);
-    const saved = await newCustomer.save();
-    res.status(201).json(saved);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
+export const createCustomer = async (req, res) => {
+    try {
+        const newCustomer = new Customer(req.body);
+        const saved = await newCustomer.save();
+        res.status(201).json(saved);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
 };
 
 // تعديل بيانات زبون
