@@ -1,7 +1,8 @@
 // routes/customers.js
-const express = require("express");
+import express from "express";
+import * as customerController from "../controllers/customerController.js";
+
 const router = express.Router();
-const customerController = require("../controllers/customerController");
 
 // روابط التحكم بالزبائن
 router.get("/", customerController.getAllCustomers);
@@ -13,5 +14,5 @@ router.delete("/:id", customerController.deleteCustomer);
 router.post("/:id/contracts", customerController.addContract);
 router.delete("/:customerId/contracts/:contractId", customerController.deleteContract);
 
-// هـــام جـداً لحل المشكلة: تصدير الـ router ليقرأه ملف server.js
-module.exports = router;
+// تصدير الـ router بالنظام الحديث
+export default router;
