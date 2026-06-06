@@ -1,6 +1,13 @@
-// models/Customer.js
-// تأكد من وجود هذه الحقول في موديل MongoDB الخاص بك
 import mongoose from 'mongoose';
+
+const contractSchema = new mongoose.Schema({
+    startDate: String,
+    endDate: String,
+    renewalDate: String,
+    notes: String,
+    status: { type: String, default: 'active' } // مثلاً: نشط أو منتهي
+});
+
 const customerSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
@@ -10,6 +17,8 @@ const customerSchema = new mongoose.Schema({
     email: String,
     bankCard: String,
     contractType: String,
-    notes: String
+    notes: String,
+    contracts: [contractSchema] // مصفوفة عقود تحتوي على تفاصيل كل عقد
 });
+
 export default mongoose.model('Customer', customerSchema);
