@@ -14,5 +14,4 @@ router.delete("/:id", customerController.deleteCustomer);
 router.post("/:id/contracts", customerController.addContract);
 router.delete("/:customerId/contracts/:contractId", customerController.deleteContract);
 
-// تصدير الـ router بالنظام الحديث
-export default mongoose.model('Customer', customerSchema);
+export default router;
