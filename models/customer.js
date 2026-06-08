@@ -16,7 +16,12 @@ const customerSchema = new mongoose.Schema({
     phone: String,
     email: String,
     bankCard: String,
-    contractType: String,
+    contracts: [{
+        type: String,
+        provider: String,
+        startDate: Date,
+        endDate: Date,
+        status: String}],
     notes: String,
     contracts: [contractSchema] // مصفوفة عقود تحتوي على تفاصيل كل عقد
 });
